@@ -1,0 +1,19 @@
+LANGUAGE = {
+
+    formats = {
+
+    },
+
+    translations = {
+
+        global = {
+
+            ['Hello world'] = "こんにちは世界",
+            ['My name is %name%'] = "私の名前は%name%です"
+
+        }
+
+    }
+
+}
+return LANGUAGE

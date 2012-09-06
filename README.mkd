@@ -1,0 +1,84 @@
+# BABEL
+
+Babel is a set of simple internationalisation tools for LÖVE 2D.
+
+## Setting it up
+
+Simply copy `babel.lua` in your project folder and modify the `main.lua` file
+like this :
+
+``` lua
+require "path to babel.lua (without '.lua')"
+
+function love.load()
+
+    babel.init({ locale = "fre-FR" })
+
+end
+```
+
+## Use babel
+
+### Initialisation
+
+You must initialize babel in `love.load()`.
+
+``` lua
+babel.init()
+```
+
+`babel.init()` can get a table as argument with the following indexes :
+
+  * `locale` The locale to use.
+  * `locales_path` The path to the translation files.
+
+### Translate text
+
+There is two function to translate text : `babel.translate` and `_` (who is an
+alias to the first function).
+
+``` lua
+_( "Text to translate" )
+-- or
+babel.translate( "Text to translate" )
+```
+
+#### Using variables in translated texts
+
+You can use variables in translations by passing extra parameters to the
+translate function :
+
+``` lua
+_( "Hello %name%", { name = "your name" } )
+```
+
+You can use as many entries you need in the extra `table`.
+
+## Create and manage locale files
+
+All the translations are stored in a lua file with the name of the locale (for
+ex. `eng-UK.lua` or `fre-FR.lua`. Thoses files are stored in the folder given
+in `babel.init()` (or in a `translations` folder in the same folder than
+`babel.lua` if none given).
+
+### Structure of a locale file
+
+``` lua
+LANGUAGE = {
+
+    formats = {
+        -- Will be available in futur versions
+    },
+
+    -- List of all the translations
+    translations = {
+
+        -- The key of each element is the text in parameter of babel.translate()
+        ['Hello world'] = "Bonjour le monde",
+        ['My name is %name%'] = "Mon nom est %name%"
+
+    }
+
+}
+return LANGUAGE
+```
