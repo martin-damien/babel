@@ -4,10 +4,13 @@ require "babel"
 function love.load()
 
     -- Init Babel with your custom values
-    babel.init({ locale = "fre-FR" })
-
-    font = love.graphics.newFont( "fonts/Ubuntu-Regular.ttf", 17 )
-    love.graphics.setFont( font )
+    babel.init({
+        locale = "fre-FR",
+        locales_folders = {
+            "translations",
+            "custom/translations"
+        }
+    })
 
 end
 
