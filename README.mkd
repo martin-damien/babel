@@ -30,7 +30,7 @@ babel.init()
 `babel.init()` can get a table as argument with the following indexes :
 
   * `locale` The locale to use.
-  * `locales_path` The path to the translation files.
+  * `locales_folders` The folders where babel will look for locales files.
 
 ### Translate text
 
@@ -53,6 +53,14 @@ _( "Hello %name%", { name = "your name" } )
 ```
 
 You can use as many entries you need in the extra `table`.
+
+### Add locales files on the fly
+
+I fyou need to load other locales files after `init()`, you can use :
+
+``` lua
+babel.addLocalesFolder( "my other/folder" )
+```
 
 ## Create and manage locale files
 
