@@ -46,6 +46,13 @@ babel.switchLocale = function( locale )
 
     locale = locale or babel.current_locale
 
+    -- Back to default
+    if locale == nil or locale == '' then
+      babel.current_locale = nil
+      babel.formats = nil
+      babel.dictionary = {}
+    end
+
     for _, folder in pairs( babel.locales_folders ) do
 
         if love.filesystem.exists( folder .. "/" .. locale .. ".lua" ) then
@@ -60,7 +67,7 @@ babel.switchLocale = function( locale )
             language = chunk()
 
             babel.formats = babel.mergeTables( babel.formats, language.formats or {} )
-            babel.dictionary = babel.mergeTables( babel.dictionary, language.translations or {} )
+            babel.dictionary = language.translations or {}
 
         end
 
