@@ -1,10 +1,30 @@
 --[[
 
-    Babel
-    Simple internationalisation tools for LÖVE 2D
+    Babel, a simple internationalisation tool for LÖVE 2D and standalone
+    Lua applications (using lfs).
+    Copyright (C) 2013  MARTIN Damien
 
-    Authors : MARTIN Damien, KOLL Thomas R.
-    License : GNU/GPL3+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+    CONTRIBUTORS
+    ------------
+
+        KOLL Thomas R.
+
+            Github:  https://github.com/TomK32
+            Website: http://ananasblau.com
 
 ]]
 
@@ -14,6 +34,29 @@ babel.current_locale  = nil     -- Remember the current locale
 babel.debug           = false   -- Display debug informations
 babel.locales_folders = {}      -- List of all the folders look in
 
+-- We test if we are in a LÖVE application or not
+-- This make Babel usable for LÖVE application and
+-- standalone applications.
+
+local in_love = love or nil
+local file_exists = function() end
+local load = function() end
+
+if not in_love then
+    -- We are not in LÖVE so we must use lfs instead
+    require "lfs"
+    file_exists = function( file )
+        local test, err_msg = lfs.attributes( file )
+        if test then return true else return false end
+    end
+    load = function( file )
+        return loadfile( file )
+    end
+else
+    -- We are in LÖVE
+    file_exists = love.filesystem.exists
+    load = love.filesystem.load
+end
 
 --- Init babel with the wished values.
 -- @param settings A table with all the needed settings for babel.
@@ -28,8 +71,8 @@ babel.init = function( settings )
 end
 
 babel.reset = function()
-  babel.dictionary      = {}      -- List of all the translations
-  babel.formats         = {}      -- List of all the formats
+    babel.dictionary      = {}      -- List of all the translations
+    babel.formats         = {}      -- List of all the formats
 end
 
 --- Add a locales folder to the existing list.
