@@ -28,7 +28,7 @@
 
 ]]
 
-babel = {}
+local babel = {}
 
 babel.current_locale  = nil     -- Remember the current locale
 babel.debug           = false   -- Display debug informations
@@ -99,7 +99,7 @@ babel.switchLocale = function( locale )
 
     for _, folder in pairs( babel.locales_folders ) do
 
-        if love.filesystem.exists( folder .. "/" .. locale .. ".lua" ) then
+        if file_exists( folder .. "/" .. locale .. ".lua" ) then
 
             if babel.debug then
                 print( "BABEL : Loading " .. folder .. "/" .. locale .. ".lua" )
@@ -107,7 +107,7 @@ babel.switchLocale = function( locale )
 
             babel.current_locale = locale
 
-            chunk = love.filesystem.load( folder .. "/" .. locale .. ".lua" )
+            chunk = load( folder .. "/" .. locale .. ".lua" )
             language = chunk()
 
             babel.formats = babel.mergeTables( babel.formats, language.formats or {} )
@@ -159,5 +159,7 @@ end
 
 
 -- Function shortcut (gettext like)
-_ = babel.translate
+_G._ = babel.translate
 
+
+return babel
