@@ -8,11 +8,11 @@ Simply copy `babel.lua` in your project folder and modify the `main.lua` file
 like this :
 
 ``` lua
-require "path to babel.lua (without '.lua')"
+babel = require "path to babel.lua (without '.lua')"
 
 function love.load()
 
-    babel.init({ locale = "fre-FR" })
+    babel.init({ locale = "fr-FR" })
 
 end
 ```
@@ -27,14 +27,14 @@ You must initialize babel in `love.load()`.
 babel.init()
 ```
 
-`babel.init()` can get a table as argument with the following indexes :
+`babel.init()` can get a table as argument with the following keys :
 
   * `locale` The locale to use.
   * `locales_folders` The folders where babel will look for locales files.
 
 ### Translate text
 
-There is two function to translate text : `babel.translate` and `_` (who is an
+There are two functions to translate texts : `babel.translate` and `_` (which is an
 alias to the first function).
 
 ``` lua
@@ -56,7 +56,7 @@ You can use as many entries you need in the extra `table`.
 
 ### Add locales files on the fly
 
-I fyou need to load other locales files after `init()`, you can use :
+If you need to load other locales files after `init()`, you can use :
 
 ``` lua
 babel.addLocalesFolder( "my other/folder" )
@@ -65,7 +65,7 @@ babel.addLocalesFolder( "my other/folder" )
 ## Create and manage locale files
 
 All the translations are stored in a lua file with the name of the locale (for
-ex. `eng-UK.lua` or `fre-FR.lua`. Thoses files are stored in the folder given
+ex. `en-UK.lua` or `fr-FR.lua`. Thoses files are stored in the folder given
 in `babel.init()` (or in a `translations` folder in the same folder than
 `babel.lua` if none given).
 
@@ -75,7 +75,7 @@ in `babel.init()` (or in a `translations` folder in the same folder than
 LANGUAGE = {
 
     formats = {
-        -- Will be available in futur versions
+        -- Will be available in future versions
     },
 
     -- List of all the translations
