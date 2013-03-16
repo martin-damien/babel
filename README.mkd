@@ -12,7 +12,7 @@ Then you will call babel with:
 
 ```lua
 babel = require "your/path/to/babel"
-``
+```
 
 ### Luarocks / from downloaded sources
 
@@ -86,6 +86,7 @@ function love.load()
     })
 
 end
+```
 
 ## API
 
