@@ -127,6 +127,14 @@ If you need to load other locales files after `init()`, you can use :
 babel.addLocalesFolder( "my other/folder" )
 ```
 
+### Change which locale to use
+
+You can switch the current locale using:
+
+```lua
+babel.switchToLocale( locale )
+```
+
 ## Create and manage locale files
 
 All the translations are stored in a lua file with the name of the locale (for

@@ -55,11 +55,11 @@ if not in_love then
         if test then return true else return false end
     end
     load = function( file )
-				local chunk, msg = loadfile(file)
-				if not chunk then
-					msg = msg:gsub('^%w+%.lua:%d+:','')
-					return error(('Error reading locale file: "%s":\n\t%s'):format(file,msg),2)
-				end
+                local chunk, msg = loadfile(file)
+                if not chunk then
+                    msg = msg:gsub('^%w+%.lua:%d+:','')
+                    return error(('Error reading locale file: "%s":\n\t%s'):format(file,msg),2)
+                end
         return chunk
     end
 else
@@ -112,7 +112,7 @@ end
 
 --- Change current locale (can be used without parameters to reload current locale).
 -- @param locale The locale to use.
-babel.switchLocale = function( locale )
+babel.switchToLocale = function( locale )
 
     locale = locale or babel.current_locale
 
@@ -123,7 +123,8 @@ babel.switchLocale = function( locale )
     babel.reset()
 
     for _, folder in pairs( babel.locales_folders ) do
-				local locale_file = ("%s/%s.lua"):format(folder, locale)
+
+        local locale_file = ("%s/%s.lua"):format(folder, locale)
 
         if file_exists( locale_file ) then
 
@@ -133,13 +134,13 @@ babel.switchLocale = function( locale )
 
             local chunk = load( locale_file )
             language = chunk()
-						babel.current_locale = locale
+                        babel.current_locale = locale
             babel.formats = mergeTables( babel.formats, language.formats or {} )
             babel.dictionary = mergeTables( babel.dictionary, language.translations or {} )
 
         else
-					return error(('Cannot find locale file: "%s"'):format(locale_file))
-				end
+            return error(('Cannot find locale file: "%s"'):format(locale_file))
+        end
 
     end
 
