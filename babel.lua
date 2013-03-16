@@ -55,11 +55,11 @@ if not in_love then
         if test then return true else return false end
     end
     load = function( file )
-                local chunk, msg = loadfile(file)
-                if not chunk then
-                    msg = msg:gsub('^%w+%.lua:%d+:','')
-                    return error(('Error reading locale file: "%s":\n\t%s'):format(file,msg),2)
-                end
+        local chunk, msg = loadfile(file)
+        if not chunk then
+            msg = msg:gsub('^%w+%.lua:%d+:','')
+            return error(('Error reading locale file: "%s":\n\t%s'):format(file,msg),2)
+        end
         return chunk
     end
 else
