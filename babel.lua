@@ -83,6 +83,7 @@ local mergeTables = function( t1, t2 )
 
 end
 
+
 --- Init babel with the wished values.
 -- @param settings A table with all the needed settings for babel.
 babel.init = function( settings )
@@ -91,7 +92,7 @@ babel.init = function( settings )
     babel.locales_folders = settings.locales_folders or { "translations" }
     babel.debug           = settings.debug or false
 
-    babel.switchLocale( babel.current_locale )
+    babel.switchToLocale( babel.current_locale )
 
 end
 
@@ -100,17 +101,32 @@ babel.reset = function()
     babel.formats         = {}      -- List of all the formats
 end
 
+babel.loadLocalePreset = function( locale )
+
+    local babel_path = string.gsub( debug.getinfo(1).short_src, "babel.lua", "" )
+    local locale_file = ("%sbabel-locales/%s.lua"):format( babel_path, locale )
+
+    if file_exists( locale_file ) then
+        local chunk = load( locale_file )
+        local preset = chunk()
+        babel.formats = preset.formats
+    end
+
+end
+
 --- Add a locales folder to the existing list.
 -- @param folder The folder to look in.
 babel.addLocalesFolder = function( folder )
 
     table.insert( babel.locales_folders, folder )
-    babel.switchLocale() -- Reload current locale
+    babel.switchToLocale() -- Reload current locale
 
 end
 
 
 --- Change current locale (can be used without parameters to reload current locale).
+-- Note: This function don't stop if a file with the correct name can't be
+-- found in one of the folders (file existence is not mandatory).
 -- @param locale The locale to use.
 babel.switchToLocale = function( locale )
 
@@ -121,6 +137,7 @@ babel.switchToLocale = function( locale )
     end
 
     babel.reset()
+    babel.loadLocalePreset( locale )
 
     for _, folder in pairs( babel.locales_folders ) do
 
@@ -133,13 +150,11 @@ babel.switchToLocale = function( locale )
             end
 
             local chunk = load( locale_file )
-            language = chunk()
-                        babel.current_locale = locale
+            local language = chunk()
+            babel.current_locale = locale
             babel.formats = mergeTables( babel.formats, language.formats or {} )
             babel.dictionary = mergeTables( babel.dictionary, language.translations or {} )
 
-        else
-            return error(('Cannot find locale file: "%s"'):format(locale_file))
         end
 
     end
@@ -164,6 +179,48 @@ babel.translate = function( str, parameters )
     end
 
     return translation
+
+end
+
+
+--- Get the current date time or the given date time table.
+-- @param date_time The table of the date time to get (look at os.date for format)
+-- @param short_format A boolean to force short format or long format (default
+-- is short).
+babel.dateTime = function( format, date_time )
+
+    if date_time == nil then date_time = os.date( "*t" ) end
+
+    local H = date_time.hour                    -- Hour on 24
+    local i = date_time.min                     -- Minutes
+    local s = date_time.sec                     -- Seconds
+    local g = ( H <= 12 ) and H or ( H - 12 )   -- Hour on 12
+    local a = ( H <= 12 ) and "AM" or "PM"      -- AM/PM
+    local d = date_time.day                     -- Day
+    local l = babel.formats.long_day_names[date_time.wday]
+    local F = babel.formats.long_month_names[date_time.month]
+    local m = date_time.month                   -- Index of the month in the year
+    local Y = date_time.year                    -- Year (4 digits)
+    local pattern = ""                          -- date time pattern
+
+    if not babel.formats.date_time[format] then
+        pattern = format
+    else
+        pattern = babel.formats.date_time[format]
+    end
+
+    pattern = pattern:gsub( "%%a", a )
+    pattern = pattern:gsub( "%%H", ( H < 10 ) and "0" .. H or H )
+    pattern = pattern:gsub( "%%i", ( i < 10 ) and "0" .. i or i )
+    pattern = pattern:gsub( "%%s", ( s < 10 ) and "0" .. s or s )
+    pattern = pattern:gsub( "%%g", ( g < 10 ) and "0" .. g or g )
+    pattern = pattern:gsub( "%%d", ( d < 10 ) and "0" .. d or d )
+    pattern = pattern:gsub( "%%m", ( m < 10 ) and "0" .. m or m )
+    pattern = pattern:gsub( "%%Y", Y )
+    pattern = pattern:gsub( "%%l", l )
+    pattern = pattern:gsub( "%%F", F )
+
+    return pattern
 
 end
 
