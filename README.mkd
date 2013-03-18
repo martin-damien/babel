@@ -108,12 +108,53 @@ _( "Text to translate" )
 babel.translate( "Text to translate" )
 ```
 
+### Formating date and time
+
+There is only one function for displaying date and time : `babel.dateTime`:
+
+```lua
+babel.dateTime( "long_date_time", os.date( "*t" ) )
+babel.dateTime( "%H:%i:s" )
+```
+
+The first parameter could be two things:
+
+  * An index in the `date_time` table in the `formats` table of locale files.
+  * A pattern to use
+
+The second parameter is a table following the format returned by `os.date`
+([See documentation](http://www.lua.org/pil/22.1.html)). If not provided, it will
+be set to the current date/time.
+
+#### Symbols that can be used in custom patterns
+
+  * **%H**: hour (on 24)
+  * **%i**: minutes
+  * **%s**: secondes
+  * **g**: hour (on 12)
+  * **a**: AM/PM
+  * **d**: day
+  * **l**: day name (long name)
+  * **F**: month name (long name)
+  * **m**: month
+  * **Y**: year (4 digits)
+
+### Formating numbers
+
+There is two functions to format numbers : `babel.number` for simple numbers
+and `babel.price` for prices.
+
+```lua
+babel.price( 2340.90 )  --  £ 2,340.90
+babel.number( -3400 )   --   -3,400.00
+```
+
 #### Using variables in translated texts
 
 You can use variables in translations by passing extra parameters to the
 translate function :
 
-``` lua
+```lua
 _( "Hello %name%", { name = "your name" } )
 ```
 

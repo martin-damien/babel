@@ -84,6 +84,49 @@ local mergeTables = function( t1, t2 )
 end
 
 
+--- 
+-- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
+local separateThousand = function( amount, separator )
+    local formatted = amount
+    while true do
+        formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1' .. separator .. '%2')
+        if k == 0 then
+            break
+        end
+    end
+    return formatted
+end
+
+
+--- 
+-- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
+local round = function( val, decimal )
+    if decimal then
+        return math.floor( ( val * 10 ^ decimal ) + 0.5 ) / ( 10 ^ decimal )
+    else
+        return math.floor( val + 0.5 )
+    end
+end
+
+
+--- 
+-- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
+local formatNum = function( amount, digits, separator, decimal )
+
+    local famount = math.floor( math.abs( round( amount, digits ) ) )
+    local remain = round( math.abs( amount ) - famount, digits )
+    local formatted = separateThousand( famount, separator )
+
+    if digits > 0 then
+        remain = string.sub( tostring( remain ), 3 )
+        formatted = formatted .. decimal .. remain .. string.rep( "0", digits - string.len( remain ) )
+    end
+
+    return formatted
+
+end
+
+
 --- Init babel with the wished values.
 -- @param settings A table with all the needed settings for babel.
 babel.init = function( settings )
@@ -221,6 +264,52 @@ babel.dateTime = function( format, date_time )
     pattern = pattern:gsub( "%%F", F )
 
     return pattern
+
+end
+
+
+---
+-- @param amount The amount to display.
+babel.price = function( amount )
+
+    local pattern   = ""
+    local polarity  = ""
+    local digits    = babel.formats.currency.fract_digits
+    local separator = babel.formats.currency.thousand_separator
+    local decimal   = babel.formats.currency.decimal_symbol
+    local symbol    = babel.formats.currency.symbol
+
+    if amount < 0 then
+        polarity = babel.formats.currency.negative_symbol
+        pattern = babel.formats.currency.negative_format
+    else
+        polarity = babel.formats.currency.positive_symbol
+        pattern = babel.formats.currency.positive_format
+    end
+
+    pattern = pattern:gsub( "%%p", polarity )
+    pattern = pattern:gsub( "%%q", formatNum( amount, digits, separator, decimal ) )
+    pattern = pattern:gsub( "%%c", symbol )
+
+    return pattern
+
+end
+
+
+babel.number = function( number )
+
+    local polarity  = ""
+    local digits    = babel.formats.currency.fract_digits
+    local separator = babel.formats.currency.thousand_separator
+    local decimal   = babel.formats.currency.decimal_symbol
+
+    if number < 0 then
+        polarity = babel.formats.currency.negative_symbol
+    else
+        polarity = babel.formats.currency.positive_symbol
+    end
+
+    return polarity .. formatNum( number, digits, separator, decimal )
 
 end
 
