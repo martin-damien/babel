@@ -131,13 +131,13 @@ be set to the current date/time.
   * **%H**: hour (on 24)
   * **%i**: minutes
   * **%s**: secondes
-  * **g**: hour (on 12)
-  * **a**: AM/PM
-  * **d**: day
-  * **l**: day name (long name)
-  * **F**: month name (long name)
-  * **m**: month
-  * **Y**: year (4 digits)
+  * **%g**: hour (on 12)
+  * **%a**: AM/PM
+  * **%d**: day
+  * **%l**: day name (long name)
+  * **%F**: month name (long name)
+  * **%m**: month
+  * **%Y**: year (4 digits)
 
 ### Formating numbers
 
@@ -189,7 +189,9 @@ in `babel.init()` (or in a `translations` folder in the same folder than
 LANGUAGE = {
 
     formats = {
-        -- Will be available in futur versions
+        date_time = {
+            my_format = "%l %H:%i"
+        }
     },
 
     -- List of all the translations
