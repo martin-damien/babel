@@ -23,8 +23,17 @@ build = {
         babel = "babel.lua",
 
         -- Each local have to be added manualy here
+        ["babel-locales.ar-SA"] = "babel-locales/ar-SA.lua",
+        ["babel-locales.ca-ES"] = "babel-locales/ca-ES.lua",
+        ["babel-locales.cz-CZ"] = "babel-locales/cz-CZ.lua",
+        ["babel-locales.da-DK"] = "babel-locales/da-DK.lua",
+        ["babel-locales.en-UK"] = "babel-locales/en-UK.lua",
+        ["babel-locales.eo-EO"] = "babel-locales/eo-EO.lua",
         ["babel-locales.fr-FR"] = "babel-locales/fr-FR.lua",
-        ["babel-locales.en-UK"] = "babel-locales/en-UK.lua"
+        ["babel-locales.hr-HR"] = "babel-locales/hr-HR.lua",
+        ["babel-locales.zh-CN"] = "babel-locales/zh-CN.lua",
+        ["babel-locales.zh-HK"] = "babel-locales/zh-HK.lua",
+        ["babel-locales.zh-TW"] = "babel-locales/zh-TW.lua",
 
     }
 }

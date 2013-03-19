@@ -299,14 +299,14 @@ end
 babel.number = function( number )
 
     local polarity  = ""
-    local digits    = babel.formats.currency.fract_digits
-    local separator = babel.formats.currency.thousand_separator
-    local decimal   = babel.formats.currency.decimal_symbol
+    local digits    = babel.formats.number.fract_digits
+    local separator = babel.formats.number.thousand_separator
+    local decimal   = babel.formats.number.decimal_symbol
 
     if number < 0 then
-        polarity = babel.formats.currency.negative_symbol
+        polarity = babel.formats.number.negative_symbol
     else
-        polarity = babel.formats.currency.positive_symbol
+        polarity = babel.formats.number.positive_symbol
     end
 
     return polarity .. formatNum( number, digits, separator, decimal )
