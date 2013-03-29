@@ -37,9 +37,11 @@ build = {
         ["babel-locales.es-ES"] = "babel-locales/es-ES.lua",
         ["babel-locales.fr-FR"] = "babel-locales/fr-FR.lua",
         ["babel-locales.hr-HR"] = "babel-locales/hr-HR.lua",
+        ["babel-locales.nl-NL"] = "babel-locales/nl-NL.lua",
         ["babel-locales.zh-CN"] = "babel-locales/zh-CN.lua",
         ["babel-locales.zh-HK"] = "babel-locales/zh-HK.lua",
         ["babel-locales.zh-TW"] = "babel-locales/zh-TW.lua",
 
-    }
+    },
+    copy_directories = { "babel-unit-tests" }
 }
