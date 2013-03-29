@@ -65,7 +65,7 @@ the API and this short example:
 
 babel.init({ locale = "jap-JP" })
 
-print( _("Hello %%name%%", { name = "Kitty" }) )
+print( _("Hello %name%", { name = "Kitty" }) )
 ```
 
 ### LÖVE games
