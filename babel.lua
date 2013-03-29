@@ -213,8 +213,11 @@ babel.translate = function( str, parameters )
     local parameters = parameters or {}
     local translation
 
-    if not babel.dictionary[str] then return end
-    translation = babel.dictionary[str]
+    if not babel.dictionary[str] then
+        return str
+    else
+        translation = babel.dictionary[str]
+    end
 
     -- Replace parameters
     for key, value in pairs( parameters ) do
