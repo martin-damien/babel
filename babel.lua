@@ -214,7 +214,7 @@ babel.translate = function( str, parameters )
     local translation
 
     if not babel.dictionary[str] then
-        return str
+        translation = str
     else
         translation = babel.dictionary[str]
     end

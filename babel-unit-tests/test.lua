@@ -39,6 +39,10 @@ describe( "Babel Unit Tests", function()
             assert.same( babel.translate( "Hello Kitty" ), "Hello Kitty" )
         end)
 
+        it ( "Use dynamic values in strings", function()
+            assert.same( babel.translate( "Hello %name%", { name = "Kitty" } ), "Hello Kitty" )
+        end)
+
         it ( "_ shortcut is available in clean environement", function()
             assert.same( _, babel.translate )
         end)
