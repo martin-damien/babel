@@ -1,7 +1,7 @@
 package = "babel"
 version = "1.1-1"
 source = {
-    url = "https://github.com/martin-damien/babel/archive/master.zip"
+    url = "https://github.com/martin-damien/babel/archive/v1.2.zip"
 }
 description = {
     summary = "A simple internationalisation module",
@@ -43,5 +43,5 @@ build = {
         ["babel-locales.zh-TW"] = "babel-locales/zh-TW.lua",
 
     },
-    copy_directories = { "tests", "locales" }
+    copy_directories = { "babel-unit-tests" }
 }
