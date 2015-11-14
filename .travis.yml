@@ -16,8 +16,7 @@ install:
   - sudo luarocks install luacov-coveralls
 
 after_success:
-  - lua -lluacov babel.lua
-  - luacov-coveralls
+  - luacov-coveralls -c .luacov
 
 script: busted --coverage tests
 
