@@ -1,5 +1,7 @@
 # BABEL
 
+[![Build Status](https://travis-ci.org/martin-damien/babel.svg)](https://travis-ci.org/martin-damien/babel)
+
 Babel is a simple internationalisation tool for Lua and LÖVE 2D.
 
 ## Installation
@@ -209,4 +211,3 @@ return LANGUAGE
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/martin-damien/babel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

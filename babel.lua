@@ -158,7 +158,7 @@ end
 babel.loadLocalePreset = function( locale )
 
     local babel_path = string.gsub( debug.getinfo(1).short_src, "babel.lua", "" )
-    local locale_file = ("%locales/%s.lua"):format( babel_path, locale )
+    local locale_file = ("%slocales/%s.lua"):format( babel_path, locale )
 
     if file_exists( locale_file ) then
         local chunk = load( locale_file )

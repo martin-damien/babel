@@ -12,8 +12,9 @@ before_install:
 install:
   - sudo apt-get update -qq
   - sudo luarocks install busted
+  - sudo luarocks install luacov
 
-script: busted tests
+script: busted --coverage tests
 
 branches:
   except:
