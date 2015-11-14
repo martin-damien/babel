@@ -13,6 +13,10 @@ install:
   - sudo apt-get update -qq
   - sudo luarocks install busted
   - sudo luarocks install luacov
+  - sudo luarocks install luacov-coveralls
+
+after_success:
+  - luacov-coveralls
 
 script: busted --coverage tests
 

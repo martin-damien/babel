@@ -1,6 +1,7 @@
 # BABEL
 
 [![Build Status](https://travis-ci.org/martin-damien/babel.svg)](https://travis-ci.org/martin-damien/babel)
+[![Coverage Status](https://coveralls.io/repos/martin-damien/babel/badge.svg?branch=master&service=github)](https://coveralls.io/github/martin-damien/babel?branch=master)
 
 Babel is a simple internationalisation tool for Lua and LÖVE 2D.
 
