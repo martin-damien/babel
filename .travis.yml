@@ -1,0 +1,25 @@
+language: c
+
+env:
+  - LUA='Lua 5.1'
+  - LUA='Lua 5.2'
+  - LUA='Lua 5.3'
+  - LUA='LuaJIT 2.0'
+
+before_install:
+  - bash .travis_setup.sh
+
+install:
+  - sudo apt-get update -qq
+  - sudo luarocks install busted
+  - sudo luarocks install luacov
+  - sudo luarocks install luacov-coveralls
+
+after_success:
+  - luacov-coveralls -c .luacov
+
+script: busted --coverage tests
+
+branches:
+  except:
+    - gh-pages

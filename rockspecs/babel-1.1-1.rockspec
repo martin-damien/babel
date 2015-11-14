@@ -43,5 +43,5 @@ build = {
         ["babel-locales.zh-TW"] = "babel-locales/zh-TW.lua",
 
     },
-    copy_directories = { "babel-unit-tests" }
+    copy_directories = { "tests", "locales" }
 }

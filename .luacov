@@ -1,0 +1,16 @@
+return {
+
+  ["exclude"] = {
+    'busted',
+    'mediator',
+    'pl',
+    'say',
+    'socket',
+    'term',
+    'luarocks',
+    'luacov',
+    'luassert',
+    'tests'
+  },
+
+}

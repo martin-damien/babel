@@ -2,20 +2,31 @@
 
     Babel, a simple internationalisation tool for LÖVE 2D and standalone
     Lua applications (using lfs).
-    Copyright (C) 2013  MARTIN Damien
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    MIT License
+    -----------
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+        Copyright (C) 2013-2015  MARTIN Damien
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+
+        The above copyright notice and this permission notice shall be included in
+        all copies or substantial portions of the Software.
+
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.
 
 
     CONTRIBUTORS
@@ -68,6 +79,7 @@ else
     load = love.filesystem.load
 end
 
+
 --- Merge two tables in one. t2 elements will be added to t1 and t2 elements will
 -- override existing elements in t2.
 -- @param t1 The table who will be used to be merged.
@@ -84,7 +96,7 @@ local mergeTables = function( t1, t2 )
 end
 
 
---- 
+---
 -- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
 local separateThousand = function( amount, separator )
     local formatted = amount
@@ -98,18 +110,14 @@ local separateThousand = function( amount, separator )
 end
 
 
---- 
+---
 -- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
 local round = function( val, decimal )
-    if decimal then
-        return math.floor( ( val * 10 ^ decimal ) + 0.5 ) / ( 10 ^ decimal )
-    else
-        return math.floor( val + 0.5 )
-    end
+    return math.floor( ( val * 10 ^ decimal ) + 0.5 ) / ( 10 ^ decimal )
 end
 
 
---- 
+---
 -- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
 local formatNum = function( amount, digits, separator, decimal )
 
@@ -139,15 +147,20 @@ babel.init = function( settings )
 
 end
 
+
+--- Reset the loaded translations and formats.
 babel.reset = function()
     babel.dictionary      = {}      -- List of all the translations
     babel.formats         = {}      -- List of all the formats
 end
 
+
+--- Load a preset.
+-- @param locale The locale to load.
 babel.loadLocalePreset = function( locale )
 
     local babel_path = string.gsub( debug.getinfo(1).short_src, "babel.lua", "" )
-    local locale_file = ("%sbabel-locales/%s.lua"):format( babel_path, locale )
+    local locale_file = ("%slocales/%s.lua"):format( babel_path, locale )
 
     if file_exists( locale_file ) then
         local chunk = load( locale_file )
@@ -205,9 +218,9 @@ babel.switchToLocale = function( locale )
 end
 
 
---- Translate a string to the current locale (dynamic texts could be inserted)
+--- Translate a string to the current locale (dynamic texts could be inserted).
 -- @param string The text to translate.
--- @param parameters A list of all the dynamic elements in the string
+-- @param parameters A list of all the dynamic elements in the string.
 babel.translate = function( str, parameters )
 
     local parameters = parameters or {}
@@ -271,7 +284,7 @@ babel.dateTime = function( format, date_time )
 end
 
 
----
+--- Return a formated price.
 -- @param amount The amount to display.
 babel.price = function( amount )
 
@@ -299,6 +312,8 @@ babel.price = function( amount )
 end
 
 
+--- Return a formated number.
+-- @param number The number to format.
 babel.number = function( number )
 
     local polarity  = ""
