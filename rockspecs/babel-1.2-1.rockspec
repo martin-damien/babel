@@ -1,5 +1,5 @@
 package = "babel"
-version = "1.1-1"
+version = "1.2-1"
 source = {
     url = "https://github.com/martin-damien/babel/archive/v1.2.zip"
 }
@@ -23,25 +23,43 @@ build = {
         babel = "babel.lua",
 
         -- Each local have to be added manualy here
-        ["babel-locales.ar-SA"] = "babel-locales/ar-SA.lua",
-        ["babel-locales.ca-ES"] = "babel-locales/ca-ES.lua",
-        ["babel-locales.cz-CZ"] = "babel-locales/cz-CZ.lua",
-        ["babel-locales.da-DK"] = "babel-locales/da-DK.lua",
-        ["babel-locales.el-EL"] = "babel-locales/el-EL.lua",
-        ["babel-locales.en-AU"] = "babel-locales/en-AU.lua",
-        ["babel-locales.en-CA"] = "babel-locales/en-CA.lua",
-        ["babel-locales.en-NZ"] = "babel-locales/en-NZ.lua",
-        ["babel-locales.en-UK"] = "babel-locales/en-UK.lua",
-        ["babel-locales.en-US"] = "babel-locales/en-US.lua",
-        ["babel-locales.eo-EO"] = "babel-locales/eo-EO.lua",
-        ["babel-locales.es-ES"] = "babel-locales/es-ES.lua",
-        ["babel-locales.fr-FR"] = "babel-locales/fr-FR.lua",
-        ["babel-locales.hr-HR"] = "babel-locales/hr-HR.lua",
-        ["babel-locales.nl-NL"] = "babel-locales/nl-NL.lua",
-        ["babel-locales.zh-CN"] = "babel-locales/zh-CN.lua",
-        ["babel-locales.zh-HK"] = "babel-locales/zh-HK.lua",
-        ["babel-locales.zh-TW"] = "babel-locales/zh-TW.lua",
+        ["locales.ar-SA"] = "locales/ar-SA.lua",
+        ["locales.ca-ES"] = "locales/ca-ES.lua",
+        ["locales.cz-CZ"] = "locales/cz-CZ.lua",
+        ["locales.da-DK"] = "locales/da-DK.lua",
+        ["locales.de-DE"] = "locales/de-DE.lua",
+        ["locales.el-EL"] = "locales/el-EL.lua",
+        ["locales.en-AU"] = "locales/en-AU.lua",
+        ["locales.en-CA"] = "locales/en-CA.lua",
+        ["locales.en-NZ"] = "locales/en-NZ.lua",
+        ["locales.en-UK"] = "locales/en-UK.lua",
+        ["locales.en-US"] = "locales/en-US.lua",
+        ["locales.eo-EO"] = "locales/eo-EO.lua",
+        ["locales.es-ES"] = "locales/es-ES.lua",
+        ["locales.fi-FI"] = "locales/fi-FI.lua",
+        ["locales.fr-FR"] = "locales/fr-FR.lua",
+        ["locales.he-IL"] = "locales/he-IL.lua",
+        ["locales.hi-IN"] = "locales/hi-IN.lua",
+        ["locales.hr-HR"] = "locales/hr-HR.lua",
+        ["locales.hu-HU"] = "locales/hu-HU.lua",
+        ["locales.id-ID"] = "locales/id-ID.lua",
+        ["locales.it-IT"] = "locales/it-IT.lua",
+        ["locales.jp-JP"] = "locales/jp-JP.lua",
+        ["locales.ko-KR"] = "locales/ko-KR.lua",
+        ["locales.nl-NL"] = "locales/nl-NL.lua",
+        ["locales.no-NO"] = "locales/no-NO.lua",
+        ["locales.pl-PL"] = "locales/pl-PL.lua",
+        ["locales.pt-BR"] = "locales/pt-BR.lua",
+        ["locales.ru-RU"] = "locales/ru-RU.lua",
+        ["locales.se-SE"] = "locales/se-SE.lua",
+        ["locales.sk-SK"] = "locales/sk-SK.lua",
+        ["locales.sr-SR"] = "locales/sr-SR.lua",
+        ["locales.tr-TR"] = "locales/tr-TR.lua",
+        ["locales.uk-UA"] = "locales/uk-UA.lua",
+        ["locales.zh-CN"] = "locales/zh-CN.lua",
+        ["locales.zh-HK"] = "locales/zh-HK.lua",
+        ["locales.zh-TW"] = "locales/zh-TW.lua",
 
     },
-    copy_directories = { "babel-unit-tests" }
+    copy_directories = { "tests" }
 }

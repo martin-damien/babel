@@ -79,6 +79,7 @@ else
     load = love.filesystem.load
 end
 
+
 --- Merge two tables in one. t2 elements will be added to t1 and t2 elements will
 -- override existing elements in t2.
 -- @param t1 The table who will be used to be merged.
@@ -112,11 +113,7 @@ end
 ---
 -- @author Based on the work of Sam Lie (http://lua-users.org/wiki/FormattingNumbers)
 local round = function( val, decimal )
-    if decimal then
-        return math.floor( ( val * 10 ^ decimal ) + 0.5 ) / ( 10 ^ decimal )
-    else
-        return math.floor( val + 0.5 )
-    end
+    return math.floor( ( val * 10 ^ decimal ) + 0.5 ) / ( 10 ^ decimal )
 end
 
 
@@ -150,11 +147,16 @@ babel.init = function( settings )
 
 end
 
+
+--- Reset the loaded translations and formats.
 babel.reset = function()
     babel.dictionary      = {}      -- List of all the translations
     babel.formats         = {}      -- List of all the formats
 end
 
+
+--- Load a preset.
+-- @param locale The locale to load.
 babel.loadLocalePreset = function( locale )
 
     local babel_path = string.gsub( debug.getinfo(1).short_src, "babel.lua", "" )
@@ -216,9 +218,9 @@ babel.switchToLocale = function( locale )
 end
 
 
---- Translate a string to the current locale (dynamic texts could be inserted)
+--- Translate a string to the current locale (dynamic texts could be inserted).
 -- @param string The text to translate.
--- @param parameters A list of all the dynamic elements in the string
+-- @param parameters A list of all the dynamic elements in the string.
 babel.translate = function( str, parameters )
 
     local parameters = parameters or {}
@@ -282,7 +284,7 @@ babel.dateTime = function( format, date_time )
 end
 
 
----
+--- Return a formated price.
 -- @param amount The amount to display.
 babel.price = function( amount )
 
@@ -310,6 +312,8 @@ babel.price = function( amount )
 end
 
 
+--- Return a formated number.
+-- @param number The number to format.
 babel.number = function( number )
 
     local polarity  = ""

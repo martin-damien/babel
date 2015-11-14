@@ -40,6 +40,10 @@ describe( "Number formating using Babel #i10n", function()
             assert.same( babel.price( 5 ), "5,00 €" )
         end)
 
+        it ( "Currency symbol is present and negativ numbers are displayed correctly", function()
+            assert.same( babel.price( -23.4 ), "-23,40 €" )
+        end)
+
     end)
 
 end)

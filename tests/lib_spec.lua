@@ -8,9 +8,12 @@ describe( "Babel functionalities #lib", function()
 
         babel = require "babel"
         babel.init( {
-            locale = "fr-FR",
-            locales_folders = { "tests/translations" }
+            locale = "fr-FR"
         } )
+
+        ---
+        -- Add local folder folder on demand
+        babel.addLocalesFolder( "tests/translations" )
 
     end)
 

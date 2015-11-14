@@ -67,7 +67,7 @@ the API and this short example:
 -- "translations" folder at the root of our project.
 -- (this is the default path)
 
-babel.init({ locale = "jap-JP" })
+babel.init({ locale = "jp-JP" })
 
 print( _("Hello %name%", { name = "Kitty" }) )
 ```
@@ -85,7 +85,7 @@ You must initialize babel in `love.load()`.
 function love.load()
 
     babel.init({
-        locale = "fre-FR",
+        locale = "fr-FR",
         locales_folders = { "assets/i18n", "assets/i18n/monsters" }
     })
 
@@ -183,7 +183,7 @@ babel.switchToLocale( locale )
 ## Create and manage locale files
 
 All the translations are stored in a lua file with the name of the locale (for
-ex. `eng-UK.lua` or `fre-FR.lua`. Thoses files are stored in the folder given
+ex. `en-UK.lua` or `fr-FR.lua`. Thoses files are stored in the folder given
 in `babel.init()` (or in a `translations` folder in the same folder than
 `babel.lua` if none given).
 
@@ -211,5 +211,45 @@ LANGUAGE = {
 return LANGUAGE
 ```
 
+### Embedded languages presets
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/martin-damien/babel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+Babel embbed presets for some languages:
+
+- ar-SA
+- ca-ES
+- cz-CZ
+- da-DK
+- de-DE
+- el-EL
+- en-AU
+- en-CA
+- en-NZ
+- en-UK
+- en-US
+- eo-EO
+- es-ES
+- fi-FI
+- fr-FR
+- he-IL
+- hi-IN
+- hr-HR
+- hu-HU
+- id-ID
+- it-IT
+- jp-JP
+- ko-KR
+- nl-NL
+- no-NO
+- pl-PL
+- pt-BR
+- ru-RU
+- sk-SK
+- se-SE
+- sr-SR
+- tr-TR
+- uk-UA
+- zh-CN
+- zh-HK
+- zh-TW
+
+**NB:** If you want to fix or add a preset for your language, please make a pull request :)
