@@ -4,7 +4,7 @@ LOCALE = {
 
         currency = {
 
-            symbol = "ytl",
+            symbol = "₺",
             name = "Lira",
             short_name = "YTL",
             decimal_symbol = ".",
