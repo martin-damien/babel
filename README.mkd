@@ -42,9 +42,6 @@ babel = require "babel"
 
 ### Luarocks / from official repository
 
-**babel is not currently in the Luarocks repository (process is pending) so,
-this will not work for now!**
-
 In a terminal type:
 
     luarocks install babel
@@ -118,7 +115,7 @@ There is only one function for displaying date and time : `babel.dateTime`:
 
 ```lua
 babel.dateTime( "long_date_time", os.date( "*t" ) )
-babel.dateTime( "%H:%i:s" )
+babel.dateTime( "%H:%i:%s" )
 ```
 
 The first parameter could be two things:
