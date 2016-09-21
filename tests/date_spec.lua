@@ -9,7 +9,7 @@ describe( "Date format using Babel #date", function()
 
         babel = require "babel"
         babel.init( {
-            locale = "fr-FR",
+            locale = "fr_FR",
             locales_folders = { "tests/translations" }
         } )
 

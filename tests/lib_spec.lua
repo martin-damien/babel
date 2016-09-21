@@ -8,7 +8,7 @@ describe( "Babel functionalities #lib", function()
 
         babel = require "babel"
         babel.init( {
-            locale = "fr-FR"
+            locale = "fr_FR"
         } )
 
         ---
