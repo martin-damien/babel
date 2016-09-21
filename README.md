@@ -64,10 +64,13 @@ the API and this short example:
 -- "translations" folder at the root of our project.
 -- (this is the default path)
 
-babel.init({ locale = "jp-JP" })
+babel.init({ locale = "jp_JP" })
 
 print( _("Hello %name%", { name = "Kitty" }) )
 ```
+
+**NB:** By default, the locale is the OS locale. If the OS locale cannot be found,
+the locale is set to "en_UK".
 
 ### LÖVE games
 
@@ -212,41 +215,41 @@ return LANGUAGE
 
 Babel embbed presets for some languages:
 
-- ar-SA
-- ca-ES
-- cz-CZ
-- da-DK
-- de-DE
-- el-EL
-- en-AU
-- en-CA
-- en-NZ
-- en-UK
-- en-US
-- eo-EO
-- es-ES
-- fi-FI
-- fr-FR
-- he-IL
-- hi-IN
-- hr-HR
-- hu-HU
-- id-ID
-- it-IT
-- jp-JP
-- ko-KR
-- nl-NL
-- no-NO
-- pl-PL
-- pt-BR
-- ru-RU
-- sk-SK
-- se-SE
-- sr-SR
-- tr-TR
-- uk-UA
-- zh-CN
-- zh-HK
-- zh-TW
+- ar_SA
+- ca_ES
+- cz_CZ
+- da_DK
+- de_DE
+- el_EL
+- en_AU
+- en_CA
+- en_NZ
+- en_UK
+- en_US
+- eo_EO
+- es_ES
+- fi_FI
+- fr_FR
+- he_IL
+- hi_IN
+- hr_HR
+- hu_HU
+- id_ID
+- it_IT
+- jp_JP
+- ko_KR
+- nl_NL
+- no_NO
+- pl_PL
+- pt_BR
+- ru_RU
+- sk_SK
+- se_SE
+- sr_SR
+- tr_TR
+- uk_UA
+- zh_CN
+- zh_HK
+- zh_TW
 
 **NB:** If you want to fix or add a preset for your language, please make a pull request :)

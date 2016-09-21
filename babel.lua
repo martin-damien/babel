@@ -134,12 +134,34 @@ local formatNum = function( amount, digits, separator, decimal )
 
 end
 
+--- Get the locale of the OS.
+babel.getOSLocale = function()
+  
+    local locale = os.getenv("LANG")
+    
+    if locale ~= nil then
+      if babel.debug then
+          print( ("BABEL : getting locale from OS : %s"):format(locale))
+      end
+      return string.sub(locale, 0, 5)
+    end
+  
+    if babel.debug then
+        print( ("BABEL : getting locale from OS : nil"))
+    end
+      
+    return nil
+  
+end
+
 
 --- Init babel with the wished values.
 -- @param settings A table with all the needed settings for babel.
 babel.init = function( settings )
 
-    babel.current_locale  = settings.locale or "en-UK"
+    settings = settings or {}
+
+    babel.current_locale  = settings.locale or babel.getOSLocale() or "en_UK"
     babel.locales_folders = settings.locales_folders or { "translations" }
     babel.debug           = settings.debug or false
 

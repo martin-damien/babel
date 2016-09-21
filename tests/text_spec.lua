@@ -8,7 +8,7 @@ describe( "Text translation using Babel #i18n", function()
 
         babel = require "babel"
         babel.init( {
-            locale = "fr-FR",
+            locale = "fr_FR",
             locales_folders = { "tests/translations" }
         } )
 
