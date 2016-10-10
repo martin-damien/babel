@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - All local files are now underscored instead of dashed. **THIS BROKE COMPATIBILITY WITH OLDER VERSIONS IF YOU USED DEFAULT LOCALES**
 - README.mkd > README.md
 
+### Removed
+- `debug` option that was not used in the code.
+
 ## [1.3-0] 2016-04-24
 ### Fixed
 - Fix an error with `babel.dateTime()` and seconds.

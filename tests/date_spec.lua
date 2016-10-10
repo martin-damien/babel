@@ -31,7 +31,7 @@ describe( "Date format using Babel #date", function()
     -- Date and time formating
     describe( "Date and time", function()
 
-        pending ( "Use predefined date/time formats", function()
+        it ( "Use predefined date/time formats", function()
             assert.same( babel.dateTime( "long_date_time", test_date ), "vendredi 17 février 1984 10:42:03" )
         end)
 
