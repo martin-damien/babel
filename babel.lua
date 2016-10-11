@@ -47,7 +47,6 @@
 local babel = {}
 
 babel.current_locale  = nil     -- Remember the current locale
-babel.debug           = false   -- Display debug informations
 babel.locales_folders = {}      -- List of all the folders look in
 
 -- We test if we are in a LÖVE application or not
@@ -67,10 +66,6 @@ if not in_love then
     end
     load = function( file )
         local chunk, msg = loadfile(file)
-        if not chunk then
-            msg = msg:gsub('^%w+%.lua:%d+:','')
-            return error(('Error reading locale file: "%s":\n\t%s'):format(file,msg),2)
-        end
         return chunk
     end
 else
@@ -139,18 +134,7 @@ babel.getOSLocale = function()
   
     local locale = os.getenv("LANG")
     
-    if locale ~= nil then
-      if babel.debug then
-          print( ("BABEL : getting locale from OS : %s"):format(locale))
-      end
-      return string.sub(locale, 0, 5)
-    end
-  
-    if babel.debug then
-        print( ("BABEL : getting locale from OS : nil"))
-    end
-      
-    return nil
+    return string.sub(locale, 0, 5)
   
 end
 
@@ -163,7 +147,6 @@ babel.init = function( settings )
 
     babel.current_locale  = settings.locale or babel.getOSLocale() or "en_UK"
     babel.locales_folders = settings.locales_folders or { "translations" }
-    babel.debug           = settings.debug or false
 
     babel.switchToLocale( babel.current_locale )
 
@@ -222,10 +205,6 @@ babel.switchToLocale = function( locale )
         local locale_file = ("%s/%s.lua"):format(folder, locale)
 
         if file_exists( locale_file ) then
-
-            if babel.debug then
-                print( ("BABEL : Loading : %s"):format(locale_file))
-            end
 
             local chunk = load( locale_file )
             local language = chunk()

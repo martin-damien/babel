@@ -18,7 +18,7 @@ install:
 after_success:
   - luacov-coveralls -c .luacov
 
-script: busted --coverage tests
+script: LANG=eo_EO ; busted --coverage tests
 
 branches:
   except:
