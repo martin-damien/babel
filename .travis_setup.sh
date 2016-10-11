@@ -3,7 +3,6 @@
 # LUA must be "Lua 5.1", "Lua 5.2", "Lua 5.3" or "LuaJIT 2.0".
 
 set -e
-export LANG=eo_EO
 
 echo 'rocks_servers = {
   "http://luarocks.org/repositories/rocks"
