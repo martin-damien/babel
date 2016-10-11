@@ -1,17 +1,12 @@
+require "tests.love_mocks"
+
+print(love.filesystem.exists())
+
 describe("Fake Löve2D", function()
     
     local babel
 
-    -- Mock Löve2D
-    local love = {
-        filesystem = {
-            exists = function() end,
-            load = function() end
-        }
-    }
-
     setup( function()
-
         babel = require "babel"
         babel.init( {
             locale = "fr_FR",
@@ -21,6 +16,10 @@ describe("Fake Löve2D", function()
     end)
 
     describe( "Simple text", function()
+
+        -- Using empty functions, we must not
+        -- have entries in the dictionnary.
+        assert.same( babel.dictionary, {} )
 
     end)
     
