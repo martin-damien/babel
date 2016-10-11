@@ -36,4 +36,19 @@ describe( "Babel functionalities #lib", function()
 
     end)
 
+    describe( "Don't load translations on empty locale", function()
+    
+        local before = babel.dictionary
+        
+        babel.switchToLocale( "" )
+        assert.same( babel.dictionary, before )
+
+        babel.switchToLocale( false )
+        assert.same( babel.dictionary, before )
+
+        babel.switchToLocale( nil )
+        assert.same( babel.dictionary, before )
+
+    end)
+
 end)
