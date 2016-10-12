@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.4-0] 2016-10-12
 ### Added
 - Autodetect which locale to use from OS locale.
 - CHANGELOG.md
@@ -33,6 +33,7 @@ Exactly th same as 1.2-0.
 ## [1.2-0] 2015-11-14
 First release
 
+[1.4-0]: https://github.com/martin-damien/babel/compare/v1.3-0...v1.4-0 
 [1.3-0]: https://github.com/martin-damien/babel/compare/v1.2-3...v1.3-0 
 [1.2-3]: https://github.com/martin-damien/babel/compare/v1.2-2...v1.2-3
 [1.2-2]: https://github.com/martin-damien/babel/compare/v1.2-0...v1.2-2
