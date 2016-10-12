@@ -1,7 +1,7 @@
 package = "babel"
 version = "1.4-0"
 source = {
-    url = "https://github.com/martin-damien/babel/archive/v1.3-0.zip",
+    url = "https://github.com/martin-damien/babel/archive/v1.4-0.zip",
     dir = "babel-1.4-0"
 }
 description = {
