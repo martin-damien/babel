@@ -29,12 +29,12 @@ LOCALE = {
 
         date_time = {
 
-            long_time = "%g:%i:%s %a",
-            short_time = "%g:%i %a",
+            long_time = "%H:%i:%s",
+            short_time = "%H:%i",
             long_date = "%l %d %F %Y",
-            short_date = "%d/%m/%Y",
-            long_date_time = "%l %d %F %Y %g:%i:%s %a",
-            short_date_time = "%d/%m/%Y %g:%i %a"
+            short_date = "%d-%m-%Y",
+            long_date_time = "%l %d %F %Y %H.%i uur",   -- The time should not start with a zero: 8.30 uur
+            short_date_time = "%d-%m-%Y %H:%i:%s"
 
         },
 
@@ -47,14 +47,14 @@ LOCALE = {
 
         long_month_names = {
 
-            "januari", "februari", "maart", "april", "mei", "Juni", "juli",
+            "januari", "februari", "maart", "april", "mei", "juni", "juli",
             "augustus", "september", "oktober", "november", "december"
 
         },
 
         short_day_names = {
 
-            "ma", "di", "woe", "do", "vr", "zat", "zon"
+            "ma", "di", "wo", "do", "vr", "za", "zo"
 
         },
 
