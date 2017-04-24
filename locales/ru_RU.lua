@@ -29,12 +29,12 @@ LOCALE = {
 
         date_time = {
 
-            long_time = "%G:%i:%s",
-            short_time = "%G:%i",
+            long_time = "%g:%i:%s",
+            short_time = "%g:%i",
             long_date = "%j %F %Y г.",
             short_date = "%d.%m.%y",
-            long_date_time = "%D, %j %F %Y %G:%i:%s",
-            short_date_time = "%d.%m.%y %G:%i"
+            long_date_time = "%D, %j %F %Y %g:%i:%s",
+            short_date_time = "%d.%m.%y %g:%i"
 
         },
 
