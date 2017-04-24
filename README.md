@@ -85,7 +85,7 @@ You must initialize babel in `love.load()`.
 function love.load()
 
     babel.init({
-        locale = "fr-FR",
+        locale = "fr_FR",
         locales_folders = { "assets/i18n", "assets/i18n/monsters" }
     })
 
@@ -183,7 +183,7 @@ babel.switchToLocale( locale )
 ## Create and manage locale files
 
 All the translations are stored in a lua file with the name of the locale (for
-ex. `en-UK.lua` or `fr-FR.lua`. Thoses files are stored in the folder given
+ex. `en_UK.lua` or `fr_FR.lua`. Thoses files are stored in the folder given
 in `babel.init()` (or in a `translations` folder in the same folder than
 `babel.lua` if none given).
 
